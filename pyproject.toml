@@ -1,0 +1,16 @@
+[project]
+name = "cbb-friday"
+version = "0.1.0"
+description = "College basketball analysis — Z-scores, auction values, and more"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "marimo",
+    "pandas",
+    "numpy",
+    "plotly",
+    "scipy",
+    "cbbpy",
+    "pyarrow",
+    "requests",
+]
