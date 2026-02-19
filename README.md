@@ -14,7 +14,7 @@ Built for live analysis with Claude Code + marimo.
 
 2. Clone this repo and install dependencies:
    ```
-   git clone <url>
+   git clone https://github.com/jjcaine/cbb-friday.git
    cd cbb-friday
    uv sync
    ```
