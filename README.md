@@ -3,7 +3,7 @@
 Z-scores, auction values, hot player detection, and quad breakdowns for college basketball.
 Built for live analysis with Claude Code + marimo.
 
-**Data:** 2024-25 season, all D1 teams. Focus on Big East and A-10 conferences.
+**Data:** 2025-26 season, all D1 teams. Focus on Big East and A-10 conferences.
 
 ## Setup (one time)
 

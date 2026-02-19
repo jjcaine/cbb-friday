@@ -6,14 +6,12 @@ app = marimo.App(width="medium")
 
 @app.cell
 def _(mo):
-    mo.md(
-        """
-        # College Basketball Analysis — 2024-25 Season
+    mo.md("""
+    # College Basketball Analysis — 2025-26 Season
 
-        Player stats, Z-scores, hot streaks, and quad breakdowns.
-        Data sourced from ESPN via sportsdataverse.
-        """
-    )
+    Player stats, Z-scores, hot streaks, and quad breakdowns.
+    Data sourced from ESPN via sportsdataverse.
+    """)
     return
 
 
@@ -28,31 +26,29 @@ def _():
 
     import marimo as mo
 
-    # Load data
-    data_dir = pathlib.Path("../data")
+    # Load data — resolve relative to this notebook file, not CWD
+    data_dir = pathlib.Path(__file__).resolve().parent.parent / "data"
     player_box = pd.read_parquet(data_dir / "player_boxscores.parquet")
     team_box = pd.read_parquet(data_dir / "team_boxscores.parquet")
     schedule = pd.read_parquet(data_dir / "schedule.parquet")
     teams = pd.read_csv(data_dir / "teams.csv")
-    return data_dir, mo, np, pd, player_box, px, schedule, stats, team_box, teams
+    return mo, player_box, schedule, teams
 
 
 @app.cell
 def _(mo, player_box, schedule, teams):
-    mo.md(
-        f"""
-        ## Data Overview
+    mo.md(f"""
+    ## Data Overview
 
-        | | Count |
-        |---|---:|
-        | **Teams** | {teams['team_display_name'].nunique():,} |
-        | **Games** | {schedule['id'].nunique():,} |
-        | **Players** | {player_box['athlete_display_name'].nunique():,} |
-        | **Player-game rows** | {len(player_box):,} |
-        | **Date range** | {player_box['game_date'].min()} to {player_box['game_date'].max()} |
-        | **Conferences** | {teams['conference_name'].nunique()} |
-        """
-    )
+    | | Count |
+    |---|---:|
+    | **Teams** | {teams['team_display_name'].nunique():,} |
+    | **Games** | {schedule['id'].nunique():,} |
+    | **Players** | {player_box['athlete_display_name'].nunique():,} |
+    | **Player-game rows** | {len(player_box):,} |
+    | **Date range** | {player_box['game_date'].min()} to {player_box['game_date'].max()} |
+    | **Conferences** | {teams['conference_name'].nunique()} |
+    """)
     return
 
 
@@ -72,7 +68,7 @@ def _(mo, teams):
         label="Pick a team",
     )
     team_dropdown
-    return focus_conferences, focus_teams, team_dropdown, team_options
+    return (team_dropdown,)
 
 
 @app.cell
@@ -91,7 +87,7 @@ def _(mo, player_box, team_dropdown):
     )
 
     mo.md(f"### {team_name} — Top 10 by PPG ({n_games} games)")
-    return n_games, season_avgs, selected_team_id, team_games, team_name
+    return (season_avgs,)
 
 
 @app.cell

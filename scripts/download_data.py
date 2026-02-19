@@ -9,7 +9,7 @@ import pathlib
 import pandas as pd
 
 DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
-SEASON = 2025  # sportsdataverse uses the spring year (2024-25 season = 2025)
+SEASON = 2026  # sportsdataverse uses the spring year (2025-26 season = 2026)
 
 # sportsdataverse GitHub release URLs
 PLAYER_BOX_URL = f"https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_{SEASON}.parquet"
