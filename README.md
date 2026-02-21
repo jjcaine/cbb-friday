@@ -24,7 +24,7 @@ That's it. Two commands.
 ## Run the notebook
 
 ```
-uv run marimo edit notebooks/cbb_analysis.py
+uv run marimo edit notebooks/cbb_analysis.py --watch
 ```
 
 This opens an interactive notebook in your browser. From there, Claude Code builds out the analysis live.
